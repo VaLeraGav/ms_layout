@@ -1,0 +1,15 @@
+.DS_Store
+.idea
+.vscode
+
+# для сборки
+go.mod
+go.sum
+
+# УДАЛИТЬ из prodaction
+# .env
+build/ci/*
+build/package/*
+
+
+

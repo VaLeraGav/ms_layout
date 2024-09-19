@@ -1,0 +1,18 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:16.1-alpine3.18
+    privileged: false
+    container_name: ms_layout_postgresql
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - .:/docker-entrypoint-initdb.d
+      - ms_layout_pgdata:/var/lib/postgresql/data
+    ports:
+      - ${DB_PORT}:5432
+
+volumes:
+  ms_layout_pgdata:

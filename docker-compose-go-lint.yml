@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  golangci-lint:
+    image: golangci/golangci-lint:latest
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: golangci-lint run
