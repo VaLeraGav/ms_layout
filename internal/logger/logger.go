@@ -2,6 +2,7 @@ package logger
 
 import (
 	"os"
+	"path/filepath"
 
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
@@ -46,6 +47,12 @@ func ConfigureLogger(env string, logPath string) *zerolog.Logger {
 }
 
 func openLogFile(logPath string) *os.File {
+	dir := filepath.Dir(logPath)
+
+	if err := os.MkdirAll(dir, 0755); err != nil {
+		log.Fatal().Err(err).Msg("Could not create log directory")
+	}
+
 	logFile, err := os.OpenFile(
 		logPath,
 		os.O_APPEND|os.O_CREATE|os.O_WRONLY,

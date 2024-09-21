@@ -1,8 +1,9 @@
-package web
+package handlers
 
 import (
 	"errors"
 	"net/http"
+	"time"
 
 	"gitlab.toledo24.ru/web/ms_layout/internal/entities"
 	"gitlab.toledo24.ru/web/ms_layout/internal/ui/respond"
@@ -24,6 +25,8 @@ var (
 
 func GetUser(log *zerolog.Logger, storeUser User) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+
+		time.Sleep(5 * time.Second)
 		companyLog := log.With().Str("method", "DeleteUser").Logger()
 
 		email := chi.URLParam(r, "email")

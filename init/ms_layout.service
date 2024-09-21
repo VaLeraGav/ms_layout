@@ -7,7 +7,7 @@ User=root
 ExecStart=EXEC_START
 Restart=always
 RestartSec=10
-Environment="LOG_PATH=PWD"
+Environment="PROJECT_PATH=PWD"
 StandardOutput=syslog
 StandardError=syslog
 

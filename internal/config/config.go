@@ -10,24 +10,24 @@ import (
 )
 
 type Config struct {
-	Env        string `yaml:"env" env-default:"local"`
-	HTTPServer `yaml:"http_server"`
-	Db         `yaml:"db"`
+	Env        string `yaml:"env" env:"ENV" env-default:"local"`
+	HTTPServer `yaml:"http_server" env:"SERVER_PORT"`
+	Db         `yaml:"db" env:"SERVER_PORT"`
 }
 
 type HTTPServer struct {
-	Address string `yaml:"address" env-default:"localhost:8080"`
-	Timeout int    `yaml:"timeout" env-default:"2"`
+	Address string `yaml:"address" env:"HTTP_SERVER_ADDRESS" env-default:"localhost:8080"`
+	Timeout int    `yaml:"timeout" env:"HTTP_TIMEOUT" env-default:"2"`
 }
 
 type Db struct {
-	Option   string `yaml:"option"`
-	Driver   string `yaml:"driver"`
-	Host     string `yaml:"host"`
-	Port     string `yaml:"port"`
-	NameDb   string `yaml:"name_db"`
-	User     string `yaml:"user"`
-	Password string `yaml:"password"`
+	Option   string `yaml:"option" env:"DB_OPTION" `
+	Driver   string `yaml:"driver" env:"DB_DRIVER"`
+	Host     string `yaml:"host" env:"DB_HOST"`
+	Port     string `yaml:"port" env:"DB_PORT"`
+	NameDb   string `yaml:"name_db" env:"DB_NAME"`
+	User     string `yaml:"user" env:"DB_USER"`
+	Password string `yaml:"password" env:"DB_PASSWORD"`
 }
 
 func MustInit(configPath string) *Config {

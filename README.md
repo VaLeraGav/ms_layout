@@ -17,13 +17,13 @@
 - развертывание
 - `make` команды
 
-Пример: 
+Пример:
 
 ```bash
 git clone https://gitlab.toledo24.ru/web/ms_layout.git
 ```
 
-Изменить внутри `Makefile` и `.scripts/deploy.sh` переменную `PROJECT_NAME` на названия микросервиса. Если в проекте используется `docker` настройте его. После этого запустить `make init`
+Проверить внутри `Makefile` и `.scripts/deploy.sh` переменную `PROJECT_NAME` на названия микросервиса. Если в проекте используется `docker` настройте его. После этого запустить `make init`
 
 Убрать из комментария в `.gitignore` файл `.env`.
 

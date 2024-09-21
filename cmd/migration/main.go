@@ -21,7 +21,7 @@ func main() {
 	flag.StringVar(&action, "action", "up", "path to config file")
 	flag.Parse()
 
-	var configs *config.Config = configs.MustInit(configPath)
+	var configs *config.Config = config.MustInit(configPath)
 
 	psqlInfo := buildConnectUrl(configs)
 	conn, err := connect_db.New(psqlInfo, configs.Db.Driver)

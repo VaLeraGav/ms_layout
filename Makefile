@@ -9,6 +9,7 @@ help:
 ## init: used to initialize the Go project, tidy, docker, migration, build and deploy
 .PHONY: init
 init:
+	find ./ -type f -not -path '*/.git/*' -exec sed -i 's/ms_layout/$(PROJECT_NAME)/g' {} +
 	go mod init gitlab.toledo24.ru/web/$(PROJECT_NAME) || true
 	go mod tidy
 	docker compose up -d
